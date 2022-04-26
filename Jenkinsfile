@@ -22,9 +22,10 @@ pipeline {
                 dir("DotnetTemplate.Web") {
                     sh "npm ci"
                     sh "npm run build"
-                    sh "npm t"              
+                    sh "npm run test-with-coverage"              
                     sh "npm run lint"
                 }
+                publishCoverage adapters: [istanbulCoberturaAdapter('DotnetTemplate.Web/coverage/cobertura-coverage.xml')]
             }
         }
     }
