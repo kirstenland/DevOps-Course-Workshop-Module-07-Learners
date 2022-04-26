@@ -1,4 +1,4 @@
-import { functionOne } from '../home/example';
+import { functionOne, functionTwo } from '../home/example';
 
 describe('Example', () => {
   it('can run functionOne', () => {
@@ -10,5 +10,10 @@ describe('Example', () => {
 
     // Then
     expect(1).toEqual(one);
+  });
+
+  it('can run functionTwo', () => {
+    // When
+    functionTwo();
   });
 });
