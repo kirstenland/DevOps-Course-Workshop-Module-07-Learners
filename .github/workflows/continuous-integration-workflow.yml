@@ -15,3 +15,13 @@ jobs:
       run: dotnet build
     - name: Run the C# tests
       run: dotnet test
+    - name: Set up node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - name: Install dependencies
+      working-directory: DotnetTemplate.Web
+      run: npm ci
+    - name: Build TypeScript code
+      working-directory: DotnetTemplate.Web
+      run: npm run build
