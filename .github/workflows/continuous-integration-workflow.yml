@@ -13,3 +13,5 @@ jobs:
         dotnet-version: 6.0.x
     - name: Build the C# code
       run: dotnet build
+    - name: Run the C# tests
+      run: dotnet test
