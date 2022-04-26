@@ -25,3 +25,9 @@ jobs:
     - name: Build TypeScript code
       working-directory: DotnetTemplate.Web
       run: npm run build
+    - name: Run TypeScript tests
+      working-directory: DotnetTemplate.Web
+      run: npm t
+    - name: Run linter on typescript code
+      working-directory: DotnetTemplate.Web
+      run: npm run lint
