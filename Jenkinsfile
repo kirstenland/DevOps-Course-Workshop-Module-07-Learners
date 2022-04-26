@@ -6,8 +6,12 @@ pipeline {
             agent {
                 docker { image 'mcr.microsoft.com/dotnet/sdk:6.0' }
             }
+            environment {
+                DOTNET_CLI_HOME = "/tmp/dotnet_cli_home"
+            }
             steps {
-                echo 'C Sharp...'
+                sh "dotnet build"
+                sh "dotnet test"
             }
         }
         stage('Typescript Code') {
@@ -15,7 +19,12 @@ pipeline {
                 docker { image 'node:17-bullseye' }
             }
             steps {
-                echo 'Typescript..'
+                dir("DotnetTemplate.Web") {
+                    sh "npm ci"
+                    sh "npm run build"
+                    sh "npm t"              
+                    sh "npm run lint"
+                }
             }
         }
     }
